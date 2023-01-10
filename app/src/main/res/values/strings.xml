@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RoomNotes</string>
+    <string name="save">save</string>
+    <string name="enter_description">Enter Description</string>
+    <string name="enter_title">Enter Title</string>
+    <string name="bg">bg</string>
+</resources>
