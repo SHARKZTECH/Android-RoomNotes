@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     NotesAdapter notesAdapter;
     List<Notes>  notesList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,5 +71,12 @@ public class MainActivity extends AppCompatActivity {
            loadNotes();
            notesAdapter.setNotesList(notesList);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadNotes();
+        notesAdapter.setNotesList(notesList);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.roomnotes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.roomnotes.db.AppDb;
 import com.example.roomnotes.db.Notes;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.List;
 
@@ -44,6 +46,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         String formatedDate= DateFormat.getDateTimeInstance().format(notesList.get(position).createdAt);
         holder.date.setText(formatedDate);
 
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent=new Intent(context,UpdateActivity.class);
+            Notes n=notesList.get(holder.getAdapterPosition());
+            intent.putExtra("Note",n);
+            context.startActivity(intent);
+        });
         holder.itemView.setOnLongClickListener(view -> {
             PopupMenu menu=new PopupMenu(context,view);
             menu.getMenu().add("Delete");
