@@ -1,7 +1,10 @@
 package com.example.roomnotes;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -14,10 +17,17 @@ import com.example.roomnotes.db.Notes;
 public class UpdateActivity extends AppCompatActivity {
     EditText titleInp,descInp;
     Button save;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
 
         titleInp=findViewById(R.id.titleInp);
         descInp=findViewById(R.id.descInp);

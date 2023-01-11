@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AddNotesActivity"
-    android:orientation="vertical">
+    android:id="@+id/coordinator">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
-
-    <FrameLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
+        android:layout_height="250dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/bg3"
-            android:scaleType="fitXY"
-            android:contentDescription="@string/bg"/>
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary"
+            android:background="@drawable/bg1"
+            app:titleCollapseMode="fade">
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:id="@+id/toolbar"
+                app:layout_collapseMode="pin">
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:fitsSystemWindows="true"
+       android:background="@drawable/bg3"
+       app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="20dp">
-
+            android:padding="20dp"
+            android:fitsSystemWindows="true">
             <EditText
                 android:id="@+id/titleInp"
                 android:layout_width="match_parent"
@@ -56,6 +72,5 @@
                 android:layout_gravity="center"/>
 
         </LinearLayout>
-    </FrameLayout>
-
-</LinearLayout>
+   </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
